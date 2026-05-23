@@ -4,7 +4,7 @@
 
 Plugin Name: Gutenberg Redirect
 Plugin URI: https://github.com/ArneGockeln/gutenberg-redirect
-Description: Redirect Gutenberg to post overview after save action.
+Description: Redirects the user to the overview page after hitting the save/publish post button in Gutenberg editor.
 Version: 0.1
 Author: Arne Gockeln
 Author URI: https://webchef.de
@@ -63,9 +63,6 @@ function gutenberg_redirect_enqueue_admin_scripts_action(): void {
         return;
     }
 
-    wp_enqueue_script('gutenberg-redirect', trailingslashit( plugin_dir_url(__FILE__ ) ) . 'js/gutenberg-redirect.js', [ 'wp-data', 'wp-dom-ready' ], '1.0.0', true);
-//    wp_localize_script( 'gutenberg-redirect', 'gutenberg_redirect_params', [
-//        'redirect_url' => admin_url( 'post.php?post_type=' . $post->post_type )
-//    ]);
+    wp_enqueue_script('gutenberg-redirect', plugins_url( 'js/gutenberg-redirect.js', __FILE__ ), [ 'wp-data', 'wp-dom-ready' ], '1.0.0', true);
 }
 add_action( 'admin_enqueue_scripts', 'gutenberg_redirect_enqueue_admin_scripts_action' );
