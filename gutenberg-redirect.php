@@ -11,6 +11,8 @@ Author URI: https://webchef.de
 Requires PHP: 8.0
 Requires at least: 6.9
 Text Domain: gutenberg-redirect
+License: GNU GPL v3
+License URI: https://www.gnu.org/licenses/gpl-3.0
 */
 
 // Exit if not called inside WP flow
@@ -42,7 +44,7 @@ function gutenberg_redirect_is_editor_active(): bool {
     }
 
 
-    if ( ( $post_id = $_GET['post'] ?? 0 ) ) {
+    if ( ( $post_id = wp_unslash( $_GET['post'] ?? 0 ) ) ) {
         if ( function_exists( 'use_block_editor_for_post' ) && ( $post = get_post( $post_id ) ) !== null ) {
             return use_block_editor_for_post( $post );
         }
