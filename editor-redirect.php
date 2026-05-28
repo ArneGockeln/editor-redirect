@@ -11,7 +11,7 @@ Author URI: https://webchef.de
 Requires PHP: 8.0
 Requires at least: 6.9
 Text Domain: editor-redirect
-License:  GPLv3 or later
+License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0
 */
 
@@ -43,7 +43,7 @@ function ag_editor_redirect_is_editor_active(): bool {
         }
     }
 
-    if ( ( $post_id = sanitize_key( wp_unslash( $_GET['post'] ?? 0 ) ) ) ) {
+    if ( $post_id = $post->ID ?? 0 ) {
         if ( function_exists( 'use_block_editor_for_post' ) && ( $post = get_post( $post_id ) ) !== null ) {
             return use_block_editor_for_post( $post );
         }
@@ -67,7 +67,6 @@ function ag_editor_redirect_enqueue_admin_scripts_action(): void {
     wp_enqueue_script('editor-redirect', plugins_url( 'js/editor-redirect.js', __FILE__ ), [ 'wp-data', 'wp-dom-ready' ], '1.0.0', true);
     wp_localize_script( 'editor-redirect', 'editorRedirect', [
         'overviewUrl' => admin_url( sprintf( 'edit.php?post_type=%s',  $post->post_type ) ),
-        'nonce' => wp_create_nonce('ajax-nonce')
     ]);
 }
 add_action( 'admin_enqueue_scripts', 'ag_editor_redirect_enqueue_admin_scripts_action');
