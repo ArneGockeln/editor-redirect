@@ -12,6 +12,11 @@ if ( gutenbergEditor ) {
             if ( ! options.isAutosave ) {
                 const failed   = wp.data.select('core/editor').didPostSaveRequestFail();
                 if ( ! failed ) {
+                    if ( typeof editorRedirect.length !== "undefined" ) {
+                        window.location.href = editorRedirect.overviewUrl;
+                        return;
+                    }
+
                     const post_type = wp.data.select('core/editor').getCurrentPostType();
                     window.location.href = '/wp-admin/edit.php?post_type=' + post_type;
                 }
