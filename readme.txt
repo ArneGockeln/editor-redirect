@@ -1,4 +1,4 @@
-=== Editor Redirect ===
+=== Webchef Editor Redirect ===
 Contributors: webchefde
 Tags: gutenberg,redirect,jump back
 Stable tag: 0.1.0

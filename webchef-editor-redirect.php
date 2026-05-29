@@ -1,16 +1,16 @@
 <?php
 /*
-@package editor-redirect
+@package webchef-editor-redirect
 
-Plugin Name: Editor Redirect
+Plugin Name: Webchef Editor Redirect
 Plugin URI: https://github.com/ArneGockeln/editor-redirect
 Description: This plugin redirects the user to the overview page after they hit the 'Save/Publish Post' button in the Gutenberg editor.
 Version: 0.1.0
-Author: Arne Gockeln
+Author: Webchef - Arne Gockeln
 Author URI: https://webchef.de
 Requires PHP: 8.0
 Requires at least: 6.9
-Text Domain: editor-redirect
+Text Domain: wc-editor-redirect
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0
 */
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return bool
  */
-function ag_editor_redirect_is_editor_active(): bool {
+function wc_editor_redirect_is_editor_active(): bool {
     if ( ! is_admin() ) {
         return false;
     }
@@ -57,16 +57,16 @@ function ag_editor_redirect_is_editor_active(): bool {
  *
  * @return void
  */
-function ag_editor_redirect_enqueue_admin_scripts_action(): void {
+function wc_editor_redirect_enqueue_admin_scripts_action(): void {
     global $post;
 
-    if ( is_null( $post ) || ! ag_editor_redirect_is_editor_active() ) {
+    if ( is_null( $post ) || ! wc_editor_redirect_is_editor_active() ) {
         return;
     }
 
-    wp_enqueue_script('editor-redirect', plugins_url( 'js/editor-redirect.js', __FILE__ ), [ 'wp-data', 'wp-dom-ready' ], '1.0.0', true);
-    wp_localize_script( 'editor-redirect', 'editorRedirect', [
+    wp_enqueue_script('wc-editor-redirect', plugins_url( 'js/editor-redirect.js', __FILE__ ), [ 'wp-data', 'wp-dom-ready' ], '1.0.0', true);
+    wp_localize_script( 'wc-editor-redirect', 'wcEditorRedirect', [
         'overviewUrl' => admin_url( sprintf( 'edit.php?post_type=%s',  $post->post_type ) ),
     ]);
 }
-add_action( 'admin_enqueue_scripts', 'ag_editor_redirect_enqueue_admin_scripts_action');
+add_action( 'admin_enqueue_scripts', 'wc_editor_redirect_enqueue_admin_scripts_action');
