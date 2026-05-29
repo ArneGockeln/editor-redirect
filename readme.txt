@@ -1,7 +1,7 @@
 === Webchef Editor Redirect ===
 Contributors: webchefde
 Tags: gutenberg,redirect,jump back
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 Requires at least: 6.9
 Tested up to: 7.0
 Requires PHP: 8.0
@@ -29,6 +29,9 @@ Download, activate and you are ready to go.
 Yes, it does.
 
 == Changelog ==
+
+= 0.1.1 =
+* Changed name with prefix
 
 = 0.1.0 =
 * First release

@@ -5,12 +5,12 @@
 Plugin Name: Webchef Editor Redirect
 Plugin URI: https://github.com/ArneGockeln/editor-redirect
 Description: This plugin redirects the user to the overview page after they hit the 'Save/Publish Post' button in the Gutenberg editor.
-Version: 0.1.0
+Version: 0.1.1
 Author: Webchef - Arne Gockeln
 Author URI: https://webchef.de
 Requires PHP: 8.0
 Requires at least: 6.9
-Text Domain: wc-editor-redirect
+Text Domain: webchef-editor-redirect
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0
 */
